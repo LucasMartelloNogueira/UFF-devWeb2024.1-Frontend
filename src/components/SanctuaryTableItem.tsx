@@ -1,5 +1,6 @@
 import { SanctuaryDTO } from "../types/SanctuaryDTO";
 import deleteIcon from "../assets/icons/database_delete.png";
+import { Link } from "react-router-dom";
 
 type SanctuaryTableItemProps = {
   sanctuary: SanctuaryDTO;
@@ -36,6 +37,7 @@ export default function SanctuaryTableItem({
         {sanctuary.owner.name}
       </td>
       <td width="12%" className="align-middle text-center">
+        <Link to="../sanctuaryInfoWithPetsPage" state={{sanctuary: sanctuary}}>ver mais</Link>
         {isLoading ? (
           <div className="spinner-border" role="status">
             <span className="visually-hidden">Loading...</span>

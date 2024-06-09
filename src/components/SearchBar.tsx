@@ -23,7 +23,6 @@ export default function SearchBar({ value, handleValue }: SearchBarProps) {
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="searchValue">Pesquisar</label>
         <input
           type="text"
           value={currentValue}

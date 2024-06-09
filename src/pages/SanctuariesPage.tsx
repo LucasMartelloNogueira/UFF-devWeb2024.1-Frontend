@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import SanctuariesTable from "../components/SanctuariesTable";
-import { useSanctuariesPaginated } from "../hooks/useSanctuariesPaginated";
 import { SanctuaryDTO } from "../types/SanctuaryDTO";
 import { useDeleteSanctuary } from "../hooks/useDeleteSanctuary";
 import Pagination from "../components/Pagination";
