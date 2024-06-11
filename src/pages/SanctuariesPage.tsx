@@ -5,11 +5,14 @@ import { useDeleteSanctuary } from "../hooks/useDeleteSanctuary";
 import Pagination from "../components/Pagination";
 import { useSanctuariesBySearchValuePaginated } from "../hooks/useSanctuariesBySearchValuePaginated";
 import SearchBar from "../components/SearchBar";
+import SanctuaryForm from "../components/SanctuaryForm";
 
 export default function SanctuariesPage() {
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(2);
   const [searchValue, setSearchValue] = useState("");
+  const initialSanctuary: SanctuaryDTO | undefined = undefined;
+  const [selectedSanctuary, setSelectedSanctuary] = useState(initialSanctuary as (SanctuaryDTO | undefined));
 
   const {
     data: sanctuariesPaginated,
@@ -61,6 +64,7 @@ export default function SanctuariesPage() {
   return (
     <>
       <h1 className="">Santuários</h1>
+      <SanctuaryForm sanctuary={selectedSanctuary} />
       <hr />
       <SearchBar value={searchValue} handleValue={setSearchValue} />
       {sanctuaries.length === 0 ? (
@@ -70,6 +74,7 @@ export default function SanctuariesPage() {
           <SanctuariesTable
             sanctuaries={sanctuaries}
             deleteSanctuary={handleDeleteSanctuary}
+            selectSanctuary={setSelectedSanctuary}
             loadingIds={loadingIds}
           />
           <Pagination

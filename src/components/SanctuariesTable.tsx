@@ -4,12 +4,14 @@ import SanctuaryTableItem from "./SanctuaryTableItem";
 type SanctuaryTableProps = {
   sanctuaries: SanctuaryDTO[];
   deleteSanctuary: (id: number) => void;
+  selectSanctuary: (sanctuary: SanctuaryDTO) => void;
   loadingIds: number[];
 };
 
 export default function SanctuariesTable({
   sanctuaries,
   deleteSanctuary,
+  selectSanctuary,
   loadingIds,
 }: SanctuaryTableProps) {
   return (
@@ -32,6 +34,7 @@ export default function SanctuariesTable({
             key={sanctuary.id}
             sanctuary={sanctuary}
             deleteSanctuary={deleteSanctuary}
+            selectSanctuary={selectSanctuary}
             isLoading={loadingIds.includes(sanctuary.id)}
           />
         ))}

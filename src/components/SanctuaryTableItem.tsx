@@ -5,16 +5,18 @@ import { Link } from "react-router-dom";
 type SanctuaryTableItemProps = {
   sanctuary: SanctuaryDTO;
   deleteSanctuary: (id: number) => void;
+  selectSanctuary: (sanctuary: SanctuaryDTO) => void;
   isLoading: boolean;
 };
 
 export default function SanctuaryTableItem({
   sanctuary,
   deleteSanctuary,
+  selectSanctuary,
   isLoading,
 }: SanctuaryTableItemProps) {
   return (
-    <tr>
+    <tr onClick={() => selectSanctuary(sanctuary)}>
       <td width="8%" className="align-middle text-center">
         {sanctuary.id}
       </td>

@@ -5,7 +5,6 @@ import HomePage from "../pages/HomePage";
 import SanctuariesPage from "../pages/SanctuariesPage";
 import QaPage from "../pages/QaPage";
 import LoginPage from "../pages/LoginPage";
-import SanctuaryInfoWithPets from "../pages/SanctuaryInfoWithPetsPage";
 import SanctuaryInfoWithPetsPage from "../pages/SanctuaryInfoWithPetsPage";
 
 export const router = createBrowserRouter([
