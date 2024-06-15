@@ -64,7 +64,7 @@ export default function SanctuariesPage() {
   return (
     <>
       <h1 className="">Santuários</h1>
-      <SanctuaryForm sanctuary={selectedSanctuary} />
+      <SanctuaryForm sanctuary={selectedSanctuary} selectSanctuary={setSelectedSanctuary} />
       <hr />
       <SearchBar value={searchValue} handleValue={setSearchValue} />
       {sanctuaries.length === 0 ? (
