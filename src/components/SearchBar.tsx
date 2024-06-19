@@ -3,12 +3,14 @@ import React, { FormEvent, useState } from "react";
 type SearchBarProps = {
   value: string;
   handleValue: (value: string) => void;
+  minWidth?: number
 };
 
-export default function SearchBar({ value, handleValue }: SearchBarProps) {
+export default function SearchBar({ value, handleValue, minWidth }: SearchBarProps) {
 
     const [currentValue, useCurrentValue] = useState(value);
     const [isButtonDisabled, useIsButtonDisabled] = useState(true);
+    const width = minWidth ?? 200
   
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -22,8 +24,10 @@ export default function SearchBar({ value, handleValue }: SearchBarProps) {
     }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form  className="d-flex" onSubmit={onSubmit} style={{minWidth: width}}>
         <input
+          className="p-2 flex-fill mr-2"
+          style={{marginRight: "5px", marginBottom: "10px"}}
           type="text"
           value={currentValue}
           onChange={(e) => handleChange(e)}

@@ -3,14 +3,16 @@ import SanctuariesTable from "../components/SanctuariesTable";
 import { SanctuaryDTO } from "../types/SanctuaryDTO";
 import { useDeleteSanctuary } from "../hooks/useDeleteSanctuary";
 import Pagination from "../components/Pagination";
-import { useSanctuariesBySearchValuePaginated } from "../hooks/useSanctuariesBySearchValuePaginated";
 import SearchBar from "../components/SearchBar";
 import SanctuaryForm from "../components/SanctuaryForm";
+import { useSanctuariesBySearchValueSortedPaginated } from "../hooks/useSanctuariesBySearchValueSortedPaginated";
 
 export default function SanctuariesPage() {
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(2);
   const [searchValue, setSearchValue] = useState("");
+  const [sortField, setSortField] = useState("id");
+  const [sortDirection, setSortDirection] = useState("asc");
   const initialSanctuary: SanctuaryDTO | undefined = undefined;
   const [selectedSanctuary, setSelectedSanctuary] = useState(initialSanctuary as (SanctuaryDTO | undefined));
 
@@ -18,10 +20,12 @@ export default function SanctuariesPage() {
     data: sanctuariesPaginated,
     isPending: loadingSantuariesPaginated,
     error: errorSanctuariesPaginated,
-  } = useSanctuariesBySearchValuePaginated({
+  } = useSanctuariesBySearchValueSortedPaginated({
     page: page,
     size: size,
     searchValue: searchValue,
+    sortField: sortField,
+    sortDirection: sortDirection,
   });
 
   const [sanctuaries, setSanctuaries] = useState([] as SanctuaryDTO[]);
@@ -76,6 +80,11 @@ export default function SanctuariesPage() {
             deleteSanctuary={handleDeleteSanctuary}
             selectSanctuary={setSelectedSanctuary}
             loadingIds={loadingIds}
+            sortField={sortField}
+            setSortField={setSortField}
+            sortDirection={sortDirection}
+            setSortDirection={setSortDirection}
+            isLoading={loadingSantuariesPaginated}
           />
           <Pagination
             totalOfPages={sanctuariesPaginated.totalOfPages}
