@@ -3,6 +3,9 @@ import { SanctuaryDTO } from "../types/SanctuaryDTO";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCreateSanctuaryByOwnerName } from "../hooks/useCreateSanctuaryByOwnerName";
+import { SanctuaryWithOwnerNameDTO } from "../types/SanctuaryWithOwnerNameDTO";
+import { useUpdateSanctuary } from "../hooks/useUpdateSanctuary";
 
 type SanctuaryFormProps = {
   sanctuary: SanctuaryDTO | undefined;
@@ -73,6 +76,23 @@ export default function SanctuaryForm({
 
   type SanctuaryForm = z.infer<typeof schema>;
 
+  const { mutate: createSanctuaryByOwnerName } =
+    useCreateSanctuaryByOwnerName();
+
+  const handleCreateNewSanctuary = (sanctuary: SanctuaryWithOwnerNameDTO) => {
+    createSanctuaryByOwnerName(sanctuary);
+    selectSanctuary(undefined);
+    setIsFormEdited(false);
+  };
+
+  const { mutate: updateSanctuary } = useUpdateSanctuary();
+
+  const handleUpdateSanctuary = (sanctuary: SanctuaryDTO) => {
+    updateSanctuary(sanctuary);
+    selectSanctuary(undefined);
+    setIsFormEdited(false);
+  }
+
   const onSubmit = ({
     name,
     owner,
@@ -82,6 +102,15 @@ export default function SanctuaryForm({
     city,
   }: SanctuaryForm) => {
     if (sanctuary === undefined) {
+      const sanctuaryByOwnerName: SanctuaryWithOwnerNameDTO = {
+        name: name,
+        country: country,
+        state: state,
+        city: city,
+        address: address,
+        ownerName: owner,
+      };
+      handleCreateNewSanctuary(sanctuaryByOwnerName);
       console.log("criando novo santuario");
     } else {
       const editedSanctuary: SanctuaryDTO = {
@@ -97,6 +126,7 @@ export default function SanctuaryForm({
         state: state,
         city: city,
       };
+      handleUpdateSanctuary(editedSanctuary);
       console.log(
         "editando novo santuario",
         JSON.stringify(editedSanctuary, null, 2)
