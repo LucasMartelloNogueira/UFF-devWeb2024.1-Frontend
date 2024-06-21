@@ -6,6 +6,7 @@ import SanctuariesPage from "../pages/SanctuariesPage";
 import QaPage from "../pages/QaPage";
 import LoginPage from "../pages/LoginPage";
 import SanctuaryInfoWithPetsPage from "../pages/SanctuaryInfoWithPetsPage";
+import SanctuaryPetPage from "../pages/SanctuaryPetPage";
 
 export const router = createBrowserRouter([
     {
@@ -17,7 +18,8 @@ export const router = createBrowserRouter([
             { path: "sanctuaries", element: <SanctuariesPage /> },
             { path: "qa", element: <QaPage /> },
             { path: "login", element: <LoginPage /> }, 
-            { path: "sanctuaryInfoWithPetsPage", element: <SanctuaryInfoWithPetsPage /> }, 
+            { path: "sanctuaryInfoWithPetsPage", element: <SanctuaryInfoWithPetsPage /> },
+            { path: "sanctuaryPetPage", element: <SanctuaryPetPage /> }, 
         ]
     }
 ]);

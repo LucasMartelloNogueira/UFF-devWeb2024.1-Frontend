@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { SanctuaryDTO } from "../types/SanctuaryDTO";
 import SanctuaryTableItem from "./SanctuaryTableItem";
-import SortOrderNoneIcon from "../assets/icons/sort-order-none.png";
 import SortOrderUpIcon from "../assets/icons/sort-order-up-16.png";
 import SortOrderDownIcon from "../assets/icons/sort-order-down-16.png";
+import SortOrderNoneIcon from "../assets/icons/sort-order-none.png";
 
 type SanctuaryTableProps = {
   sanctuaries: SanctuaryDTO[];
