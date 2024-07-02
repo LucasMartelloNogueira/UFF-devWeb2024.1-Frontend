@@ -3,8 +3,8 @@ import { CartWithPetsInfoDTO } from "../types/CartWithPetsInfoDTO";
 
 type cartHandling = {
     cart: CartWithPetsInfoDTO | undefined,
-    addToCart: (sanctuaryPetIds: number[]) => Promise<void>
-    removeFromCart: (sanctuaryPetIds: number[]) => Promise<void>
+    addToCart: (sanctuaryPetIds: number[]) => void
+    removeFromCart: (sanctuaryPetIds: number[]) => void
 }
 
 export const CartContext = createContext<cartHandling | undefined>(undefined);

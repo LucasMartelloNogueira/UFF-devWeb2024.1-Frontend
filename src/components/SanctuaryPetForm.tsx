@@ -6,6 +6,7 @@ import useEditPet from "../hooks/useEditPet";
 import { FormEvent, useState } from "react";
 import { PetDTO } from "../types/PetDTO";
 import { useDeleteSanctuaryPet } from "../hooks/useDeleteSantuaryPet";
+import useCartContext from "../contexts/CartContext";
 
 type SanctuaryPetFormProps = {
   sanctuaryPet: SanctuaryPetWithPetInfo;
@@ -14,6 +15,17 @@ type SanctuaryPetFormProps = {
 export default function SanctuaryPetForm({
   sanctuaryPet,
 }: SanctuaryPetFormProps) {
+  const { cart, addToCart, removeFromCart } = useCartContext();
+
+  const checkIfInCart = (): boolean => {
+    for (let item of cart!.sanctuaryPets) {
+      if (item.id === sanctuaryPet.id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   const [isActive, setIsActive] = useState(true);
   const [petName, setPetName] = useState(sanctuaryPet.pet.name);
   const [petAge, setPetAge] = useState(sanctuaryPet.pet.age);
@@ -23,6 +35,7 @@ export default function SanctuaryPetForm({
     sanctuaryPet.pet.estimateMonthlyCosts
   );
   const [showEditionAlert, setShowEditionAlert] = useState(false);
+  const [isInCart, setIsInCart] = useState(checkIfInCart());
 
   const getAnimalImage = (name: string) => {
     const images = new Map<string, string>([
@@ -42,7 +55,10 @@ export default function SanctuaryPetForm({
     setIsActive(false);
   };
 
-  const handleAddToCart = (sanctuaryPet: SanctuaryPetWithPetInfo) => {};
+  const handleActionCart = (sanctuaryPet: SanctuaryPetWithPetInfo) => {
+    isInCart ? removeFromCart([sanctuaryPet.id]) : addToCart([sanctuaryPet.id])
+    setIsInCart(!isInCart);
+  };
 
   const { mutate: editPet } = useEditPet();
 
@@ -66,8 +82,14 @@ export default function SanctuaryPetForm({
     return "btn" + (isActive ? " btn-danger" : " btn-outline-danger");
   };
 
-  const getSuccessButtonState = () => {
-    return "btn" + (isActive ? " btn-success" : " btn-outline-success");
+  const getCartButtonState = () => {
+    let buttonClass: string = "btn ";
+
+    let buttonState = "btn"
+    buttonState += isActive ? "" : "-outline"
+    buttonState += isInCart ? "-danger" : "-success"
+
+    return buttonClass + buttonState;
   };
 
   const submit = (e: FormEvent) => {
@@ -271,12 +293,15 @@ export default function SanctuaryPetForm({
             excluir
           </button>
           <button
-            className={getSuccessButtonState()}
+            className={getCartButtonState()}
             style={{ marginRight: "5px" }}
             disabled={!isActive}
-            onClick={() => handleAddToCart(sanctuaryPet)}
+            onClick={(e) => {
+              e.preventDefault();
+              handleActionCart(sanctuaryPet)
+            }}
           >
-            adicionar ao carrinho
+            {isInCart ? "Remover do carrinho" : "adicionar ao carrinho"}
           </button>
         </>
       </div>

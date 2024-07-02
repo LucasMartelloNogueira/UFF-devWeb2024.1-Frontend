@@ -27,8 +27,8 @@ const useCartAPI = () => {
             }
         })
 
-    const addToCart = async (updateCartDTO: UpdateCartDTO): Promise<CartWithPetsInfoDTO> => axiosInstance
-        .post<CartWithPetsInfoDTO>(CART_ADD_URL, updateCartDTO)
+    const addToCart = (updateCartDTO: UpdateCartDTO) => axiosInstance
+        .patch<CartWithPetsInfoDTO>(CART_ADD_URL, updateCartDTO)
         .then((response) => response.data)
         .catch((error) => {
             if (error.response) {
@@ -44,22 +44,22 @@ const useCartAPI = () => {
             }
         })
 
-    const removeFromCart = async (updateCartDTO: UpdateCartDTO): Promise<CartWithPetsInfoDTO> => axiosInstance
-    .post<CartWithPetsInfoDTO>(CART_REMOVE_URL, updateCartDTO)
-    .then((response) => response.data)
-    .catch((error) => {
-        if (error.response) {
-            throw new CustomError(
-                error.response.data.message,
-                error.response.data.errorCode);
-        }
-        else if(error.request) {
-            throw error;
-        }
-        else {
-            throw error;
-        }
-    })
+    const removeFromCart = (updateCartDTO: UpdateCartDTO) => axiosInstance
+        .patch<CartWithPetsInfoDTO>(CART_REMOVE_URL, updateCartDTO)
+        .then((response) => response.data)
+        .catch((error) => {
+            if (error.response) {
+                throw new CustomError(
+                    error.response.data.message,
+                    error.response.data.errorCode);
+            }
+            else if(error.request) {
+                throw error;
+            }
+            else {
+                throw error;
+            }
+        })
 
     return {getCart, addToCart, removeFromCart}
      

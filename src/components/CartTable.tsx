@@ -22,7 +22,7 @@ export default function CartTable(){
             </thead>
             <tbody>
                 {cart.sanctuaryPets.map((sanctuaryPet: SanctuaryPetWithPetInfo) => {
-                    return <CartTableItem sanctuaryPetWithPetInfo={sanctuaryPet}/>
+                    return <CartTableItem key={sanctuaryPet.id} sanctuaryPetWithPetInfo={sanctuaryPet}/>
                 })}
             </tbody>
         </table>
