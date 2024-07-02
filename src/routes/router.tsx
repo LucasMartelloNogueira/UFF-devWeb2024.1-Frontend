@@ -7,6 +7,7 @@ import QaPage from "../pages/QaPage";
 import LoginPage from "../pages/LoginPage";
 import SanctuaryInfoWithPetsPage from "../pages/SanctuaryInfoWithPetsPage";
 import SanctuaryPetPage from "../pages/SanctuaryPetPage";
+import CartPage from "../pages/CartPage";
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +20,8 @@ export const router = createBrowserRouter([
             { path: "qa", element: <QaPage /> },
             { path: "login", element: <LoginPage /> }, 
             { path: "sanctuaryInfoWithPetsPage", element: <SanctuaryInfoWithPetsPage /> },
-            { path: "sanctuaryPetPage", element: <SanctuaryPetPage /> }, 
+            { path: "sanctuaryPetPage", element: <SanctuaryPetPage /> },
+            { path: "cartPage", element: <CartPage /> } 
         ]
     }
 ]);

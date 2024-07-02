@@ -6,4 +6,7 @@ export const SANCTUARY_PETS_BY_SANCTUARY_ID_URL = "sanctuaryPets/bySanctuary"
 export const SANCTUARY_CREATE_BY_OWNER_NAME = "sanctuaries/createByOwnerName"
 export const SANCTUARY_SEARCH_VALUE_SORTED_PAGINATED_URL = "sanctuaries/filterSorted"
 export const PETS_URL = "pets"
+export const CART_URL = "cart"
+export const CART_ADD_URL = "cart/addItems"
+export const CART_REMOVE_URL = "cart/removeItems"
 

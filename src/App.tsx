@@ -1,10 +1,59 @@
 import { RouterProvider } from "react-router-dom"
 import { router } from "./routes/router"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useGetCart } from "./hooks/useGetCart";
+import { useEffect, useState } from "react";
+import { CartWithPetsInfoDTO } from "./types/CartWithPetsInfoDTO";
+import useCartAPI from "./hooks/useCartAPI";
+import { UpdateCartDTO } from "./types/UpdateCartDTO";
+import { CartContext } from "./contexts/CartContext";
+
 
 function App() {
+
+  const [cart, setCart] = useState<CartWithPetsInfoDTO | undefined>(undefined);
+  const cartId = 1;
+  
+  const {addToCart, removeFromCart} = useCartAPI();
+
+  const {
+    data: _cart,
+    isPending: isLoading,
+    error: cartError,
+  } = useGetCart(cartId);
+
+  const handleAddToCart = async (ids: number[]) => {
+    const updateCartDTO: UpdateCartDTO = {
+      cartId: 1,
+      sanctuaryPetsId: ids
+    };
+    const cart: CartWithPetsInfoDTO = await addToCart(updateCartDTO);
+    setCart(cart);
+  }
+
+  const handleRemoveFromCart = async (ids: number[]) => {
+    const updateCartDTO: UpdateCartDTO = {
+      cartId: 1,
+      sanctuaryPetsId: ids
+    };
+    const cart: CartWithPetsInfoDTO = await removeFromCart(updateCartDTO);
+    setCart(cart);
+  }
+
+  useEffect(() => {
+    if (!isLoading) {
+      setCart(_cart);
+    }
+  }, [isLoading, _cart])
+
+  if (cartError) throw new Error("erro no carrinho")
+
   return (
-    <RouterProvider router={router}/>
+    
+    <CartContext.Provider value={{cart: cart, addToCart: handleAddToCart, removeFromCart: handleRemoveFromCart}}>
+      <RouterProvider router={router}/>
+    </CartContext.Provider>
+    
   )
 }
 

@@ -6,7 +6,7 @@ function Layout() {
   return (
     <>
       <Navbar />
-      <div className="container" style={{marginTop: "50px"}}>
+      <div className="container" style={{marginTop: "70px"}}>
         <Outlet />
       </div>
       <Footer />

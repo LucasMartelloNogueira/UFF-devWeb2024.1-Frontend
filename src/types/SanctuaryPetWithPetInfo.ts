@@ -1,9 +1,10 @@
 import { PetDTO } from "./PetDTO"
 
 export type SanctuaryPetWithPetInfo = {
-    id: number,
-    pet: PetDTO,
-    sanctuaryId: number,
-    admissionDate: Date,
-    observations: string
+    id: number;
+    pet: PetDTO;
+    sanctuaryId: number;
+    admissionDate: Date;
+    adoptionStatus: string;
+    observations: string;
 }
