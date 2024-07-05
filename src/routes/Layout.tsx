@@ -4,13 +4,13 @@ import Footer from "../components/Footer";
 
 function Layout() {
   return (
-    <>
+    <div className="layout">
       <Navbar />
-      <div className="container" style={{marginTop: "70px"}}>
+      <div className="content">
         <Outlet />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 export default Layout;
