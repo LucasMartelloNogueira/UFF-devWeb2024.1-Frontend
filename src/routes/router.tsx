@@ -10,6 +10,7 @@ import SanctuaryPetPage from "../pages/SanctuaryPetPage";
 import CartPage from "../pages/CartPage";
 import PrivateRoutes from "./PrivateRoutes";
 import UserInfoPage from "../pages/UserInfoPage";
+import TermsAndServicesPage from "../pages/TermsAndServicesPage";
 
 export const router = createBrowserRouter([
     {
@@ -23,7 +24,8 @@ export const router = createBrowserRouter([
             { path: "login", element: <LoginPage /> }, 
             { path: "sanctuaryInfoWithPetsPage", element: <SanctuaryInfoWithPetsPage /> },
             { path: "sanctuaryPetPage", element: <SanctuaryPetPage /> },
-            { path: "cartPage", element: <CartPage /> } 
+            { path: "cartPage", element: <CartPage /> },
+            { path: "TermsAndServices", element: <TermsAndServicesPage /> }
         ]
     },
     {

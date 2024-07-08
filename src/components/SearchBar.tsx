@@ -11,6 +11,7 @@ export default function SearchBar({ value, handleValue, minWidth }: SearchBarPro
     const [currentValue, useCurrentValue] = useState(value);
     const [isButtonDisabled, useIsButtonDisabled] = useState(true);
     const width = minWidth ?? 200
+    const height = 50
   
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -27,14 +28,14 @@ export default function SearchBar({ value, handleValue, minWidth }: SearchBarPro
     <form  className="d-flex" onSubmit={onSubmit} style={{minWidth: width}}>
         <input
           className="p-2 flex-fill mr-2"
-          style={{marginRight: "5px", marginBottom: "10px"}}
+          style={{marginRight: "5px", marginBottom: "10px", height: height}}
           type="text"
           value={currentValue}
           onChange={(e) => handleChange(e)}
           id="searchValue"
           placeholder="pesquisar por nome, país, estado ou cidade"
         />
-      {isButtonDisabled ? <button className="btn btn-outline-primary" type="submit" disabled>Pesquisar</button> : <button className="btn btn-primary" type="submit">Pesquisar</button>}
+      {isButtonDisabled ? <button style={{height: height}} className="btn btn-outline-primary" type="submit" disabled>Pesquisar</button> : <button style={{height: height}} className="btn btn-primary" type="submit">Pesquisar</button>}
     </form>
   );
 }

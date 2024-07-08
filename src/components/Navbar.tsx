@@ -7,7 +7,6 @@ export default function Navbar() {
       <div className="container">
         <Link to="">Home</Link>
         <Link to="sanctuaries">Santuarios</Link>
-        <Link to="qa">Perguntas frequentes</Link>
         <Link to="userInfo">informações usuário</Link>
         <Link to="login">login</Link>
         <Link to="cartPage">

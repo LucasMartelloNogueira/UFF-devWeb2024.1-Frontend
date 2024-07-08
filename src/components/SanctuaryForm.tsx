@@ -91,7 +91,7 @@ export default function SanctuaryForm({
     updateSanctuary(sanctuary);
     selectSanctuary(undefined);
     setIsFormEdited(false);
-  }
+  };
 
   const onSubmit = ({
     name,
@@ -146,195 +146,201 @@ export default function SanctuaryForm({
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="Off">
-        <div className="row mt-2">
-          <div className="col">
-            <div className="d-flex flex-row">
-              <div style={{ minWidth: "70px", marginRight: "5px" }}>
-                <label htmlFor="name">Nome</label>
-              </div>
-              <div className="d-flex flex-column">
-                <input
-                  {...register("name")}
-                  type="text"
-                  placeholder={sanctuaryName}
-                  value={sanctuaryName}
-                  onChange={(e) => {
-                    setSanctuaryName(e.target.value);
-                    setIsFormEdited(
-                      sanctuary === undefined
-                        ? e.target.value !== ""
-                        : e.target.value !== sanctuary.name
-                    );
-                  }}
-                  id="name"
-                  className={
-                    errors.name
-                      ? "form-control form-control-sm is-invalid"
-                      : "form-control form-control-sm"
-                  }
-                />
-                <div className="invalid-feedback">{errors.name?.message}</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col">
-            <div className="d-flex flex-row">
-              <div style={{ minWidth: "70px", marginRight: "5px" }}>
-                <label htmlFor="owner">dono</label>
-              </div>
-              <div className="d-flex flex-column">
-                <input
-                  {...register("owner")}
-                  type="text"
-                  placeholder={sanctuaryOwnerName}
-                  value={sanctuaryOwnerName}
-                  onChange={(e) => {
-                    setSanctuaryOwnerName(e.target.value);
-                    setIsFormEdited(
-                      sanctuary === undefined
-                        ? e.target.value !== ""
-                        : e.target.value !== sanctuary.owner.name
-                    );
-                  }}
-                  id="owner"
-                  className={
-                    errors.owner
-                      ? "form-control form-control-sm is-invalid"
-                      : "form-control form-control-sm"
-                  }
-                />
-                <div className="invalid-feedback">{errors.owner?.message}</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col">
-            <div className="d-flex flex-row">
-              <div style={{ minWidth: "70px", marginRight: "5px" }}>
-                <label htmlFor="address">endereço</label>
-              </div>
-              <div className="d-flex flex-column">
-                <input
-                  {...register("address")}
-                  type="text"
-                  placeholder={sanctuaryAddress}
-                  value={sanctuaryAddress}
-                  onChange={(e) => {
-                    setSanctuaryAddress(e.target.value);
-                    setIsFormEdited(
-                      sanctuary === undefined
-                        ? e.target.value !== ""
-                        : e.target.value !== sanctuary.address
-                    );
-                  }}
-                  id="address"
-                  className={
-                    errors.address
-                      ? "form-control form-control-sm is-invalid"
-                      : "form-control form-control-sm"
-                  }
-                />
-                <div className="invalid-feedback">
-                  {errors.address?.message}
+        <div style={{marginLeft: "150px"}}>
+          <div className="row mt-2">
+            <div className="col">
+              <div className="d-flex flex-row">
+                <div style={{ minWidth: "70px", marginRight: "5px" }}>
+                  <label htmlFor="name">Nome</label>
+                </div>
+                <div className="d-flex flex-column">
+                  <input
+                    {...register("name")}
+                    type="text"
+                    placeholder={sanctuaryName}
+                    value={sanctuaryName}
+                    onChange={(e) => {
+                      setSanctuaryName(e.target.value);
+                      setIsFormEdited(
+                        sanctuary === undefined
+                          ? e.target.value !== ""
+                          : e.target.value !== sanctuary.name
+                      );
+                    }}
+                    id="name"
+                    className={
+                      errors.name
+                        ? "form-control form-control-sm is-invalid"
+                        : "form-control form-control-sm"
+                    }
+                  />
+                  <div className="invalid-feedback">{errors.name?.message}</div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="row mt-2">
-          <div className="col">
-            <div className="d-flex flex-row">
-              <div style={{ minWidth: "70px", marginRight: "5px" }}>
-                <label htmlFor="county">País</label>
+            <div className="col">
+              <div className="d-flex flex-row">
+                <div style={{ minWidth: "70px", marginRight: "5px" }}>
+                  <label htmlFor="owner">dono</label>
+                </div>
+                <div className="d-flex flex-column">
+                  <input
+                    {...register("owner")}
+                    type="text"
+                    placeholder={sanctuaryOwnerName}
+                    value={sanctuaryOwnerName}
+                    onChange={(e) => {
+                      setSanctuaryOwnerName(e.target.value);
+                      setIsFormEdited(
+                        sanctuary === undefined
+                          ? e.target.value !== ""
+                          : e.target.value !== sanctuary.owner.name
+                      );
+                    }}
+                    id="owner"
+                    className={
+                      errors.owner
+                        ? "form-control form-control-sm is-invalid"
+                        : "form-control form-control-sm"
+                    }
+                  />
+                  <div className="invalid-feedback">
+                    {errors.owner?.message}
+                  </div>
+                </div>
               </div>
-              <div className="d-flex flex-column">
-                <input
-                  {...register("country")}
-                  type="text"
-                  placeholder={sanctuaryCountry}
-                  value={sanctuaryCountry}
-                  onChange={(e) => {
-                    setSanctuaryCountry(e.target.value);
-                    setIsFormEdited(
-                      sanctuary === undefined
-                        ? e.target.value !== ""
-                        : e.target.value !== sanctuary.country
-                    );
-                  }}
-                  id="country"
-                  className={
-                    errors.address
-                      ? "form-control form-control-sm is-invalid"
-                      : "form-control form-control-sm"
-                  }
-                />
-                <div className="invalid-feedback">
-                  {errors.country?.message}
+            </div>
+
+            <div className="col">
+              <div className="d-flex flex-row">
+                <div style={{ minWidth: "70px", marginRight: "5px" }}>
+                  <label htmlFor="address">endereço</label>
+                </div>
+                <div className="d-flex flex-column">
+                  <input
+                    {...register("address")}
+                    type="text"
+                    placeholder={sanctuaryAddress}
+                    value={sanctuaryAddress}
+                    onChange={(e) => {
+                      setSanctuaryAddress(e.target.value);
+                      setIsFormEdited(
+                        sanctuary === undefined
+                          ? e.target.value !== ""
+                          : e.target.value !== sanctuary.address
+                      );
+                    }}
+                    id="address"
+                    className={
+                      errors.address
+                        ? "form-control form-control-sm is-invalid"
+                        : "form-control form-control-sm"
+                    }
+                  />
+                  <div className="invalid-feedback">
+                    {errors.address?.message}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="col">
-            <div className="d-flex flex-row">
-              <div style={{ minWidth: "70px", marginRight: "5px" }}>
-                <label htmlFor="state">Estado</label>
-              </div>
-              <div className="d-flex flex-column">
-                <input
-                  {...register("state")}
-                  type="text"
-                  placeholder={sanctuaryState}
-                  value={sanctuaryState}
-                  onChange={(e) => {
-                    setSanctuaryState(e.target.value);
-                    setIsFormEdited(
-                      sanctuary === undefined
-                        ? e.target.value !== ""
-                        : e.target.value !== sanctuary.state
-                    );
-                  }}
-                  id="state"
-                  className={
-                    errors.address
-                      ? "form-control form-control-sm is-invalid"
-                      : "form-control form-control-sm"
-                  }
-                />
-                <div className="invalid-feedback">{errors.state?.message}</div>
+          <div className="row mt-2">
+            <div className="col">
+              <div className="d-flex flex-row">
+                <div style={{ minWidth: "70px", marginRight: "5px" }}>
+                  <label htmlFor="county">País</label>
+                </div>
+                <div className="d-flex flex-column">
+                  <input
+                    {...register("country")}
+                    type="text"
+                    placeholder={sanctuaryCountry}
+                    value={sanctuaryCountry}
+                    onChange={(e) => {
+                      setSanctuaryCountry(e.target.value);
+                      setIsFormEdited(
+                        sanctuary === undefined
+                          ? e.target.value !== ""
+                          : e.target.value !== sanctuary.country
+                      );
+                    }}
+                    id="country"
+                    className={
+                      errors.address
+                        ? "form-control form-control-sm is-invalid"
+                        : "form-control form-control-sm"
+                    }
+                  />
+                  <div className="invalid-feedback">
+                    {errors.country?.message}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="col">
-            <div className="d-flex flex-row">
-              <div style={{ minWidth: "70px", marginRight: "5px" }}>
-                <label htmlFor="city">Cidade</label>
+            <div className="col">
+              <div className="d-flex flex-row">
+                <div style={{ minWidth: "70px", marginRight: "5px" }}>
+                  <label htmlFor="state">Estado</label>
+                </div>
+                <div className="d-flex flex-column">
+                  <input
+                    {...register("state")}
+                    type="text"
+                    placeholder={sanctuaryState}
+                    value={sanctuaryState}
+                    onChange={(e) => {
+                      setSanctuaryState(e.target.value);
+                      setIsFormEdited(
+                        sanctuary === undefined
+                          ? e.target.value !== ""
+                          : e.target.value !== sanctuary.state
+                      );
+                    }}
+                    id="state"
+                    className={
+                      errors.address
+                        ? "form-control form-control-sm is-invalid"
+                        : "form-control form-control-sm"
+                    }
+                  />
+                  <div className="invalid-feedback">
+                    {errors.state?.message}
+                  </div>
+                </div>
               </div>
-              <div className="d-flex flex-column">
-                <input
-                  {...register("city")}
-                  type="text"
-                  placeholder={sanctuaryCity}
-                  value={sanctuaryCity}
-                  onChange={(e) => {
-                    setSanctuaryCity(e.target.value);
-                    setIsFormEdited(
-                      sanctuary === undefined
-                        ? e.target.value !== ""
-                        : e.target.value !== sanctuary.city
-                    );
-                  }}
-                  id="city"
-                  className={
-                    errors.address
-                      ? "form-control form-control-sm is-invalid"
-                      : "form-control form-control-sm"
-                  }
-                />
-                <div className="invalid-feedback">{errors.city?.message}</div>
+            </div>
+
+            <div className="col">
+              <div className="d-flex flex-row">
+                <div style={{ minWidth: "70px", marginRight: "5px" }}>
+                  <label htmlFor="city">Cidade</label>
+                </div>
+                <div className="d-flex flex-column">
+                  <input
+                    {...register("city")}
+                    type="text"
+                    placeholder={sanctuaryCity}
+                    value={sanctuaryCity}
+                    onChange={(e) => {
+                      setSanctuaryCity(e.target.value);
+                      setIsFormEdited(
+                        sanctuary === undefined
+                          ? e.target.value !== ""
+                          : e.target.value !== sanctuary.city
+                      );
+                    }}
+                    id="city"
+                    className={
+                      errors.address
+                        ? "form-control form-control-sm is-invalid"
+                        : "form-control form-control-sm"
+                    }
+                  />
+                  <div className="invalid-feedback">{errors.city?.message}</div>
+                </div>
               </div>
             </div>
           </div>

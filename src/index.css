@@ -1,8 +1,8 @@
-
 .layout {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: rgb(245,245,245);
 }
   
 .content {
@@ -13,7 +13,11 @@
 }
 
 .footer {
-    background-color: rgb(73, 71, 71);
+    background-color: rgb(169,169,169);
     color: whitesmoke;
+}
+
+.navbar {
+    background-color: rgb(169,169,169);
 }
   

@@ -14,7 +14,9 @@ export default function SanctuariesPage() {
   const [sortField, setSortField] = useState("id");
   const [sortDirection, setSortDirection] = useState("asc");
   const initialSanctuary: SanctuaryDTO | undefined = undefined;
-  const [selectedSanctuary, setSelectedSanctuary] = useState(initialSanctuary as (SanctuaryDTO | undefined));
+  const [selectedSanctuary, setSelectedSanctuary] = useState(
+    initialSanctuary as SanctuaryDTO | undefined
+  );
 
   const {
     data: sanctuariesPaginated,
@@ -68,7 +70,12 @@ export default function SanctuariesPage() {
   return (
     <>
       <h1 className="">Santuários</h1>
-      <SanctuaryForm sanctuary={selectedSanctuary} selectSanctuary={setSelectedSanctuary} />
+      <div>
+        <SanctuaryForm
+          sanctuary={selectedSanctuary}
+          selectSanctuary={setSelectedSanctuary}
+        />
+      </div>
       <hr />
       <SearchBar value={searchValue} handleValue={setSearchValue} />
       {sanctuaries.length === 0 ? (
