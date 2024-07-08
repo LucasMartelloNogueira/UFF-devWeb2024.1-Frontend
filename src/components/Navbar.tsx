@@ -3,19 +3,27 @@ import Cart from "../assets/icons/shopping-cart.png";
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="container">
-        <Link to="">Home</Link>
-        <Link to="sanctuaries">Santuarios</Link>
-        <Link to="userInfo">informações usuário</Link>
-        <Link to="login">login</Link>
-        <Link to="cartPage">
-        
-          <div className="d-flex flex-column justify-content-center align-items-center">
-            <img src={Cart} alt="cart" style={{width: "30px", height: "30px"}}/>
-          </div>
-
-        </Link>
+        <Link className="navbar-brand" to="/">Home</Link>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="sanctuaries">Santuarios</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="userInfo">informações usuário</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="login">login</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="cartPage">
+                <img src={Cart} alt="cart" style={{width: "30px", height: "30px"}}/>
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );
