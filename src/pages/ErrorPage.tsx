@@ -8,12 +8,14 @@ export default function ErrorPage() {
 
     return (
       <>
-        <Navbar />
-        <div className="container" style={{marginTop: "70px"}}>
-          {isRouteErrorResponse(error) ? "Página requisitada inválida." :
-          error instanceof Error ? error.message : "Erro desconhecido."}
+        <div className="layout">
+          <Navbar />
+          <div className="content">
+            {isRouteErrorResponse(error) ? "Página requisitada inválida." :
+            error instanceof Error ? error.message : "Erro desconhecido."}
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </>
     );
 }
