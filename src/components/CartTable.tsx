@@ -1,5 +1,5 @@
 import useCartContext from "../contexts/CartContext";
-import { SanctuaryPetWithPetInfo } from "../types/SanctuaryPetWithPetInfo";
+import { CartItemWithPetInfoDTO } from "../types/CartItemWithPetInfoDTO";
 import CartTableItem from "./CartTableItem";
 
 export default function CartTable(){
@@ -13,7 +13,7 @@ export default function CartTable(){
             <thead>
                 <tr>
                   <th className="align-middle text-center">foto</th>
-                  <th className="align-middle text-center">id</th>
+                  <th className="align-middle text-center">petId</th>
                   <th className="align-middle text-center">nome</th>
                   <th className="align-middle text-center">animal</th>
                   <th className="align-middle text-center">quantidade</th>
@@ -21,8 +21,8 @@ export default function CartTable(){
                 </tr>
             </thead>
             <tbody>
-                {cart.sanctuaryPets.map((sanctuaryPet: SanctuaryPetWithPetInfo) => {
-                    return <CartTableItem key={sanctuaryPet.id} sanctuaryPetWithPetInfo={sanctuaryPet}/>
+                {cart.items.map((cartItem: CartItemWithPetInfoDTO) => {
+                    return <CartTableItem key={cartItem.id} cartItem={cartItem}/>
                 })}
             </tbody>
         </table>

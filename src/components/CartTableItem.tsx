@@ -1,15 +1,15 @@
 import useCartContext from "../contexts/CartContext";
-import { SanctuaryPetWithPetInfo } from "../types/SanctuaryPetWithPetInfo";
 import DogImage from "../assets/photos/cachorro.jpg";
 import CatImage from "../assets/photos/gato.jpg";
 import DefaultAnimalImage from "../assets/photos/defaultAnimal.jpg";
+import { CartItemWithPetInfoDTO } from "../types/CartItemWithPetInfoDTO";
 
 type CartTableItemProps = {
-  sanctuaryPetWithPetInfo: SanctuaryPetWithPetInfo;
+  cartItem: CartItemWithPetInfoDTO
 };
 
 export default function CartTableItem({
-  sanctuaryPetWithPetInfo,
+  cartItem,
 }: CartTableItemProps) {
   const { removeFromCart } = useCartContext();
 
@@ -29,7 +29,7 @@ export default function CartTableItem({
       <td width="1%" style={{marginLeft: "10px"}}>
         <img
           className="align-middle text-center"
-          src={getAnimalImage(sanctuaryPetWithPetInfo.pet.animal)}
+          src={getAnimalImage(cartItem.sanctuaryPetWithPetInfoDTO.pet.animal)}
           alt="foto animal"
           width="100px"
           height="50px"
@@ -37,21 +37,21 @@ export default function CartTableItem({
         />
       </td>
       <td width="8%" className="align-middle text-center">
-        {sanctuaryPetWithPetInfo.id}
+        {cartItem.sanctuaryPetWithPetInfoDTO.pet.id}
       </td>
       <td width="8%" className="align-middle text-center">
-        {sanctuaryPetWithPetInfo.pet.name}
+        {cartItem.sanctuaryPetWithPetInfoDTO.pet.name}
       </td>
       <td width="8%" className="align-middle text-center">
-        {sanctuaryPetWithPetInfo.pet.animal}
+        {cartItem.sanctuaryPetWithPetInfoDTO.pet.animal}
       </td>
       <td width="8%" className="align-middle text-center">
-        1
+        {cartItem.quantity}
       </td>
       <td width="12%" className="align-middle text-center">
         <button
           className="btn btn-danger"
-          onClick={() => removeFromCart([sanctuaryPetWithPetInfo.id])}
+          onClick={() => removeFromCart([cartItem.sanctuaryPetWithPetInfoDTO.id])}
         >
           Remover
         </button>

@@ -1,8 +1,9 @@
 export default function Home() {
     return (
         <>
+            <h1 className="text-center" >Santuarios Pet</h1>
             <div className="container my-5 p-4" style={{backgroundColor: "rgb(54, 69, 79)", color: "white"}}>
-                <h1 className="text-center mb-4">Quem somos</h1>
+                <h4 className="text-center mb-4">Quem somos</h4>
                 <div className="row">
                     <div className="col-md-6">
                         <p style={{textAlign: "justify"}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nemo velit obcaecati, dolores beatae molestias eius maiores soluta voluptatum? Distinctio deleniti esse expedita porro voluptates, quia alias illo iusto culpa?
@@ -22,7 +23,7 @@ export default function Home() {
             </div>
 
             <div className="container my-5">
-                <h1 className="text-center mb-4">Nossa missão</h1>
+                <h4 className="text-center mb-4">Nossa missão</h4>
                 <p style={{textAlign: "justify"}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci possimus odio optio dolorum, illum incidunt cum iste iusto dolore ducimus ut tenetur iure commodi voluptas, nisi repudiandae omnis obcaecati sint.
                 Ut laboriosam consequuntur illo ipsam assumenda optio. Asperiores commodi aliquid facilis corporis, quisquam obcaecati quia eligendi vel facere quibusdam? Culpa molestiae dolor porro tenetur repellat in ea maiores fugit fuga.
                 Similique voluptatem facere corrupti ratione repudiandae consectetur quae, deleniti iusto velit assumenda corporis dolorum debitis fuga sunt architecto esse alias eligendi facilis perferendis unde harum sapiente veritatis animi. Nemo, officia.
