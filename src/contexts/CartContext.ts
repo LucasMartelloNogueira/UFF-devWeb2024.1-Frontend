@@ -2,9 +2,10 @@ import { createContext, useContext } from "react";
 import { CartWithPetsInfoDTO } from "../types/CartWithPetsInfoDTO";
 
 type cartHandling = {
-    cart: CartWithPetsInfoDTO | undefined,
-    addToCart: (sanctuaryPetIds: number[]) => void
-    removeFromCart: (sanctuaryPetIds: number[]) => void
+    cart: CartWithPetsInfoDTO | undefined;
+    setCart: (newCart: CartWithPetsInfoDTO | undefined) => void;
+    addToCart: (sanctuaryPetIds: number[]) => void;
+    removeFromCart: (sanctuaryPetIds: number[]) => void;
 }
 
 export const CartContext = createContext<cartHandling | undefined>(undefined);

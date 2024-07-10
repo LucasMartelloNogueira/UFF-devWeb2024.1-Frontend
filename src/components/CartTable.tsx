@@ -17,6 +17,7 @@ export default function CartTable(){
                   <th className="align-middle text-center">nome</th>
                   <th className="align-middle text-center">animal</th>
                   <th className="align-middle text-center">quantidade</th>
+                  <th className="align-middle text-center">custos mensais</th>
                   <th className="align-middle text-center">ações</th>  
                 </tr>
             </thead>

@@ -1,8 +1,9 @@
 import axios from "axios";
 import { UpdateCartDTO } from "../types/UpdateCartDTO"
-import { BASE_URL, CART_ADD_URL, CART_REMOVE_URL, CART_URL } from "../utils/Constants";
+import { BASE_URL, CART_ADD_URL, CART_REMOVE_URL, CART_URL, UPDATE_CART_ITEM_QUANTITY_URL } from "../utils/Constants";
 import CustomError from "../utils/CustomError";
 import { CartWithPetsInfoDTO } from "../types/CartWithPetsInfoDTO";
+import { UpdateCartItemsDTO } from "../types/UpdateCartItemsDTO";
 
 const useCartAPI = () => {
 
@@ -61,7 +62,24 @@ const useCartAPI = () => {
             }
         })
 
-    return {getCart, addToCart, removeFromCart}
+    const updateCartItemQuantity = (updateCartItemsDTO: UpdateCartItemsDTO) => axiosInstance
+        .patch<CartWithPetsInfoDTO>(UPDATE_CART_ITEM_QUANTITY_URL, updateCartItemsDTO)
+        .then((response) => response.data)
+        .catch((error) => {
+            if (error.response) {
+                throw new CustomError(
+                    error.response.data.message,
+                    error.response.data.errorCode);
+            }
+            else if(error.request) {
+                throw error;
+            }
+            else {
+                throw error;
+            }
+        })
+
+    return {getCart, addToCart, removeFromCart, updateCartItemQuantity}
      
 }
 

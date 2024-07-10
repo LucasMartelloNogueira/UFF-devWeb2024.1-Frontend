@@ -9,4 +9,5 @@ export const PETS_URL = "pets"
 export const CART_URL = "cart"
 export const CART_ADD_URL = "cart/addItems"
 export const CART_REMOVE_URL = "cart/removeItems"
+export const UPDATE_CART_ITEM_QUANTITY_URL = "cart/updateCartItemQuantity"
 

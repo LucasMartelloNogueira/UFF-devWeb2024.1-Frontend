@@ -49,7 +49,7 @@ function App() {
   if (cartError) throw new Error("erro no carrinho");
 
   return (
-    <CartContext.Provider value={{ cart: cart, addToCart: handleAddToCart, removeFromCart: handleRemoveFromCart }}>
+    <CartContext.Provider value={{ cart: cart, setCart: setCart, addToCart: handleAddToCart, removeFromCart: handleRemoveFromCart }}>
       <RouterProvider router={router} />
     </CartContext.Provider>
   );
