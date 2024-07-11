@@ -24,7 +24,6 @@ export const router = createBrowserRouter([
             { path: "login", element: <LoginPage /> }, 
             { path: "sanctuaryInfoWithPetsPage", element: <SanctuaryInfoWithPetsPage /> },
             { path: "sanctuaryPetPage", element: <SanctuaryPetPage /> },
-            { path: "cartPage", element: <CartPage /> },
             { path: "TermsAndServices", element: <TermsAndServicesPage /> }
         ]
     },
@@ -33,7 +32,8 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes />,
         errorElement: <ErrorPage />,
         children: [
-          { path: "userInfo", element: <UserInfoPage /> }
+          { path: "userInfo", element: <UserInfoPage /> },
+          { path: "cartPage", element: <CartPage /> }
         ],
       },
 ]);

@@ -7,6 +7,8 @@ import { FormEvent, useState } from "react";
 import { PetDTO } from "../types/PetDTO";
 import { useDeleteSanctuaryPet } from "../hooks/useDeleteSantuaryPet";
 import useCartContext from "../contexts/CartContext";
+import useUserStore from "../store/UserStore";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type SanctuaryPetFormProps = {
   sanctuaryPet: SanctuaryPetWithPetInfo;
@@ -18,7 +20,7 @@ export default function SanctuaryPetForm({
   const { cart, addToCart, removeFromCart } = useCartContext();
 
   const checkIfInCart = (): boolean => {
-    for (let item of cart!.sanctuaryPets) {
+    for (let item of cart!.items) {
       if (item.id === sanctuaryPet.id) {
         return true;
       }
@@ -36,6 +38,9 @@ export default function SanctuaryPetForm({
   );
   const [showEditionAlert, setShowEditionAlert] = useState(false);
   const [isInCart, setIsInCart] = useState(checkIfInCart());
+
+  const user = useUserStore();
+  const navigate = useNavigate();
 
   const getAnimalImage = (name: string) => {
     const images = new Map<string, string>([
@@ -56,6 +61,11 @@ export default function SanctuaryPetForm({
   };
 
   const handleActionCart = (sanctuaryPet: SanctuaryPetWithPetInfo) => {
+    if (user.usuarioLogado.length === 0) {
+      navigate("/login")
+      return;
+    }
+
     isInCart ? removeFromCart([sanctuaryPet.id]) : addToCart([sanctuaryPet.id])
     setIsInCart(!isInCart);
   };

@@ -42,7 +42,7 @@ export default function CartPage() {
       (ci, index) => ci.quantity !== cartItemsQuantities[index].quantity
     );
     setIsChanged(hasChanges);
-    setTotalCartValue(getTotalCartValue())
+    setTotalCartValue(getTotalCartValue())  
   }, [cartItemsQuantities, initialQuantities]);
 
   const handleUpdateCart = async () => {
