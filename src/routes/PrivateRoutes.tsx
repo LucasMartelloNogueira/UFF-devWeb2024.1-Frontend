@@ -7,7 +7,7 @@ const PrivateRoutes = () => {
   const location = useLocation();
 
   if (usuarioLogado.length === 0) {
-    return <Navigate to="/login" state={{ from: location.pathname }} />;
+    return <Navigate to="/login" state={{ from: location.pathname, nextPage: location.pathname }} />;
   } else {
     return <Layout />;
   }
