@@ -20,7 +20,7 @@ export default function Footer() {
           </div>
           <div className="col-md-4">
             <h5>Endereço</h5>
-            <p><strong>UFF - Praia Vermelha Campus</strong></p>
+            <p><strong>UFF - Campus Praia Vermelha</strong></p>
             <p>R. Passo da Pátria, 152-470 - São Domingos, Niterói - RJ, 24210-240</p>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.2307704878654!2d-43.13424698869684!3d-22.904857537716378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x99817dce2f93eb%3A0x9e97773b91b93bba!2sUFF%20-%20Praia%20Vermelha%20Campus!5e0!3m2!1sen!2sbr!4v1720450293091!5m2!1sen!2sbr"

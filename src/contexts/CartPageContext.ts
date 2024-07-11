@@ -6,6 +6,7 @@ type CartPageHandling = {
     setIsChanged: (value: boolean) => void;
     cartItemsQuantities: UpdateCartItemQuantityDTO[]
     setCartItemsQuantities: (cartItemsQuantities: UpdateCartItemQuantityDTO[]) => void
+    handleRemoveFromCart: (sanctuaryPetId: number) => void
 }
 
 export const CartPageContext = createContext<CartPageHandling | undefined>(undefined);

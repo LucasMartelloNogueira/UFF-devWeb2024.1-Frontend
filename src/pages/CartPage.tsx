@@ -7,7 +7,7 @@ import { UpdateCartItemsDTO } from "../types/UpdateCartItemsDTO";
 import { UpdateCartItemQuantityDTO } from "../types/UpdateCartItemQuantityDTO";
 
 export default function CartPage() {
-  const { cart, setCart } = useCartContext();
+  const { cart, setCart, removeFromCart } = useCartContext();
   const [isChanged, setIsChanged] = useState<boolean>(false);
   const [initialQuantities, setInitialQuantities] = useState<
     UpdateCartItemQuantityDTO[]
@@ -42,7 +42,7 @@ export default function CartPage() {
       (ci, index) => ci.quantity !== cartItemsQuantities[index].quantity
     );
     setIsChanged(hasChanges);
-    setTotalCartValue(getTotalCartValue())  
+    setTotalCartValue(getTotalCartValue())
   }, [cartItemsQuantities, initialQuantities]);
 
   const handleUpdateCart = async () => {
@@ -57,6 +57,15 @@ export default function CartPage() {
     setIsChanged(false);
   };
 
+  useEffect(() => {
+    setTotalCartValue(getTotalCartValue());
+  }, [cartItemsQuantities, cart])
+
+  const handleRemoveCartItem = async (sanctuaryPetId: number) => {
+    await removeFromCart([sanctuaryPetId]);
+    setTotalCartValue(getTotalCartValue())
+  }
+
 
   return (
     <>
@@ -70,6 +79,7 @@ export default function CartPage() {
             setIsChanged: setIsChanged,
             cartItemsQuantities: cartItemsQuantities,
             setCartItemsQuantities: setCartItemsQuantities,
+            handleRemoveFromCart: handleRemoveCartItem,
           }}
         >
           <CartTable />
@@ -80,7 +90,7 @@ export default function CartPage() {
           >
             <div>
               <strong>Total: </strong>
-              {totalCartValue}
+              {totalCartValue.toFixed(2)}
               <button
                 style={{marginLeft: "10px"}}
                 className={

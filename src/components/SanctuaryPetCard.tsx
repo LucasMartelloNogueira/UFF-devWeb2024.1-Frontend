@@ -26,7 +26,7 @@ export default function SanctuaryPetCard({sanctuaryPet}: SanctuaryPetCardProps) 
     return (
         <>
             <div className="card" style={{width: "300px", margin: "10px"}}>
-                <img src={getAnimalImage(sanctuaryPet.pet.animal)} className="card-img-top" alt="..." />
+                <img width={300} height={175} src={getAnimalImage(sanctuaryPet.pet.animal)} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title text-center">{sanctuaryPet.pet.name}</h5>
                     <div>

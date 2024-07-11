@@ -1,11 +1,9 @@
-import useCartContext from "../contexts/CartContext";
 import DogImage from "../assets/photos/cachorro.jpg";
 import CatImage from "../assets/photos/gato.jpg";
 import DefaultAnimalImage from "../assets/photos/defaultAnimal.jpg";
 import { CartItemWithPetInfoDTO } from "../types/CartItemWithPetInfoDTO";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useCartPageContext from "../contexts/CartPageContext";
-import { CartWithPetsInfoDTO } from "../types/CartWithPetsInfoDTO";
 
 type CartTableItemProps = {
   cartItem: CartItemWithPetInfoDTO
@@ -14,8 +12,7 @@ type CartTableItemProps = {
 export default function CartTableItem({
   cartItem,
 }: CartTableItemProps) {
-  const { removeFromCart } = useCartContext();
-  const { setIsChanged, cartItemsQuantities, setCartItemsQuantities } = useCartPageContext();
+  const { cartItemsQuantities, setCartItemsQuantities, handleRemoveFromCart } = useCartPageContext();
   const [shownQuantity, setShownQuantity] = useState<number>(cartItem.quantity);
   const [shownEstimatedMonthlyCosts, setShownEstimatedMonthlyCosts] = useState<number>(cartItem.sanctuaryPetWithPetInfoDTO.pet.estimateMonthlyCosts * shownQuantity);
 
@@ -69,12 +66,12 @@ export default function CartTableItem({
         <input type="number" value={shownQuantity} style={{width: "50px"}} onChange={(e) => handleChangeQuantity(Number(e.target.value))} />
       </td>
       <td width="8%" className="align-middle text-center">
-        {shownEstimatedMonthlyCosts}
+        {shownEstimatedMonthlyCosts.toFixed(2)}
       </td>
       <td width="12%" className="align-middle text-center">
         <button
           className="btn btn-danger"
-          onClick={() => removeFromCart([cartItem.sanctuaryPetWithPetInfoDTO.id])}
+          onClick={() => handleRemoveFromCart(cartItem.sanctuaryPetWithPetInfoDTO.id)}
         >
           Remover
         </button>
