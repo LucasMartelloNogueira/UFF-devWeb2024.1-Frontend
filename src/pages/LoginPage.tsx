@@ -4,13 +4,11 @@ import LoginForm from "../components/LoginForm";
 export default function LoginPage() {
 
   const location = useLocation();
-  console.log(location);
-  const nextPage = location.state.nextPage || "";
-  console.log(location.state.nextPage || "");
-
+  const nextPage = location?.state?.nextPage || "/";
+  
   return (
     <>
-      <h1 className="text-center">Login</h1>
+      <h1 className="text-center">Bem vindo de volta!</h1>
       <div
         style={{
           height: "500px",

@@ -5,6 +5,7 @@ import { UseSanctuaryPetsBySanctuaryIdPaginated } from "../hooks/UseSanctuaryPet
 import { SanctuaryPetWithPetInfo } from "../types/SanctuaryPetWithPetInfo";
 import SanctuaryPetCard from "../components/SanctuaryPetCard";
 import { SanctuaryInfoWithPetsContext } from "../contexts/SanctuaryInfoWithPetsContext";
+import { useSanctuaryPetsBySanctuaryId } from "../hooks/useSanctuaryPetsBySanctuaryId";
 
 export default function SanctuaryInfoWithPetsPage() {
     const location = useLocation();
@@ -18,11 +19,8 @@ export default function SanctuaryInfoWithPetsPage() {
         data: sanctuaryPetsWithPetInfo,
         isPending: isLoadingSanctuaryPets,
         error: sanctuaryPetsError
-    } = UseSanctuaryPetsBySanctuaryIdPaginated({
-        page: page,
-        size: size,
-        sanctuaryId: sanctuaryId
-    });
+    } = useSanctuaryPetsBySanctuaryId(sanctuaryId);
+
 
     const editSanctuaryPet = (editedSanctuaryPet: SanctuaryPetWithPetInfo) => {
         setSanctuaryPets(sanctuaryPets.map(sanctuaryPet => {
@@ -31,24 +29,25 @@ export default function SanctuaryInfoWithPetsPage() {
     }
 
     useEffect(() => {
-        if (!isLoadingSanctuaryPets && sanctuaryPetsWithPetInfo?.items) {
-            setSanctuaryPets(sanctuaryPetsWithPetInfo.items);
+        if (!isLoadingSanctuaryPets && sanctuaryPetsWithPetInfo?.sanctuaryPets) {
+            setSanctuaryPets(sanctuaryPetsWithPetInfo.sanctuaryPets);
         }
     }, [isLoadingSanctuaryPets, sanctuaryPetsWithPetInfo]);
 
+    if (sanctuaryPetsError) {
+        throw new Error(`erro ao pegar pets do santuario ${sanctuaryId}`)
+    }
 
     return (
         <>
             <h4>Pets</h4>
-            
-            <SanctuaryInfoWithPetsContext.Provider value={{editSanctuaryPet: editSanctuaryPet}}>
-                {sanctuaryPets.map((sanctuaryPet) => (
-                    <SanctuaryPetCard key={sanctuaryPet.id} sanctuaryPet={sanctuaryPet} />
-                ))}
-            </SanctuaryInfoWithPetsContext.Provider>
-
-
-            
+            <div className="d-flex flex-wrap">
+                <SanctuaryInfoWithPetsContext.Provider value={{editSanctuaryPet: editSanctuaryPet}}>
+                    {sanctuaryPets.map((sanctuaryPet) => (
+                        <SanctuaryPetCard key={sanctuaryPet.id} sanctuaryPet={sanctuaryPet} />
+                    ))}
+                </SanctuaryInfoWithPetsContext.Provider>
+            </div>
         </>
     );
 }

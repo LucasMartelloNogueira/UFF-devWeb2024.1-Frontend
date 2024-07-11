@@ -38,7 +38,8 @@ export default function LoginForm({nextPage} : LoginFormProps) {
         borderStyle: "solid",
         borderRadius: "25px",
         borderWidth: "1px",
-        boxShadow: "4px 6px #888888",
+        backgroundClip: "#fff",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
       }}
       onSubmit={onSubmit}
       className="d-flex flex-column justify-content-center align-items-center"

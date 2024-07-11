@@ -12,7 +12,7 @@ export default function Navbar() {
               <Link className="nav-link" to="sanctuaries">Santuarios</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="userInfo">informações usuário</Link>
+              <Link className="nav-link" to="userInfo">meus dados</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="login">login</Link>

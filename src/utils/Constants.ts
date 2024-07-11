@@ -11,4 +11,5 @@ export const CART_ADD_URL = "cart/addItems"
 export const CART_REMOVE_URL = "cart/removeItems"
 export const UPDATE_CART_ITEM_QUANTITY_URL = "cart/updateCartItemQuantity"
 export const LOGIN_URL = "auth/login"
+export const SANCTUARY_PETS_ALL_BY_SANCTUARY_ID_URL = "sanctuaryPets/GetAllBySanctuaryId"
 
